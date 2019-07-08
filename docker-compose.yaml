@@ -1,0 +1,43 @@
+version: '3'
+
+networks:
+    hia:
+
+services:
+    hiacore:
+        container_name: 'hiacore'
+        image: 'hiacore:v1'
+        build:
+            context: .
+            dockerfile: Dockerfile.core-system
+        environment:
+            APP_NAME: 'hia'
+            APP_ENV: 'local'
+            APP_KEY: 'base64:VzcDkOFceO/mqG4L0JblpIW47bH5eDaD1UL1JPf9814='
+            APP_URL: '0.0.0.0'
+            DB_HOST: 'mysqlhia'
+            DB_PORT: '3306'
+            DB_DATABASE: 'cmsdb'
+            DB_USERNAME: 'root'
+            DB_PASSWORD: ''
+        ports:
+            - 8000:8000
+        depends_on:
+          - mysqlhia
+        networks:
+            - hia
+    mysqlhia:
+        container_name: 'mysqlhia'
+        image: 'mysqlhia'
+        build:
+            context: .
+            dockerfile: Dockerfile.mysql
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+          MYSQL_DATABASE: 'cmsdb'
+        ports:
+          - 3306:3306
+        networks:
+          - hia
+        volumes:
+            - ./mysqlconfig:/etc/mysql/conf.d
