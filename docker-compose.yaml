@@ -41,3 +41,25 @@ services:
           - hia
         volumes:
             - ./mysqlconfig:/etc/mysql/conf.d
+    composer-rest-server:
+        container_name: 'composer-rest-server'
+        image: 'hyperledger/composer-rest-server:latest'
+        environment:
+          COMPOSER_CARD: 'admindocker@hia'
+          COMPOSER_NAMESPACES: 'never'
+          COMPOSER_MULTIUSER: 'false'
+          COMPOSER_AUTHENTICATION: 'false'
+          COMPOSER_TLS: 'false'
+          COMPOSER_WEBSOCKETS: 'false'
+        volumes:
+          - ~/.composer:/home/composer/.composer
+        ports:
+          - 3000:3000
+    composer-playground:
+        container_name: 'composer-playground'
+        image: 'hyperledger/composer-playground:latest'
+        volumes:
+          - ~/.composer:/home/composer/.composer
+        ports:
+          - 8080:8080
+
