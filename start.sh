@@ -34,3 +34,5 @@ if composer card list -c admindocker@hia > /dev/null; then
 fi
 
 composer card import -f admindocker@hia.card
+
+COMPOSE_PROJECT_NAME=composer
