@@ -15,7 +15,7 @@ async function AprroveClaim(tx) {
   {
   	throw new Error('can not approve a claim that is not in pending state');
   }
-  let claimRegistry = await getAssestRegistry('hia.Claim');
+  let claimRegistry = await getAssetRegistry('hia.Claim');
   await claimRegistry.update(claim);
 }
 
@@ -32,6 +32,6 @@ async function RejectClaim(tx) {
   {
   	throw new Error('can not reject a claim that is not in pending state');
   }
-  let claimRegistry = await getAssestRegistry('hia.Claim');
+  let claimRegistry = await getAssetRegistry('hia.Claim');
   await claimRegistry.update(claim);
 }

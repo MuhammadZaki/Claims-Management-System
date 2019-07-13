@@ -29,5 +29,5 @@ RUN composer install
 
 USER hiauser
 
-CMD php artisan migrate && php artisan serve --host 0.0.0.0
+CMD sleep 30 && php artisan migrate && php artisan serve --host 0.0.0.0
 

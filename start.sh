@@ -35,4 +35,5 @@ fi
 
 composer card import -f admindocker@hia.card
 
-COMPOSE_PROJECT_NAME=composer
+export COMPOSE_PROJECT_NAME=composer
+docker-compose -f docker-compose.yaml up -d

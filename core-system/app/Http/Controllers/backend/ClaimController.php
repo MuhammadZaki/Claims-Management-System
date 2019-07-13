@@ -61,7 +61,8 @@ class ClaimController extends Controller
         $inputs['hp_id'] = auth()->guard('admin')->user()->id;
         $inputs['company_id'] = $patient->company->id;
         $inputs['cost'] = $service->cost;
-
+        /** Create a rest api to call domain: composer-rest-server:3000/api/claim **/
+        /** POST request to create the claim, wait for response to be 200 else return error from blockchain, and don't proceed **/
         $claim = Claim::create($inputs);
         if ($claim) {
             return redirect()->route('claims.index')->with('msg', trans('common.saved'));

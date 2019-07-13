@@ -16,7 +16,7 @@ namespace hia
 
 enum ClaimState {
 	o Pending
-    o Transfered
+    o Approved
     o Rejected
 }
 

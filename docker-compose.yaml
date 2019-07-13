@@ -39,8 +39,6 @@ services:
           - 3306:3306
         networks:
           - hia
-        volumes:
-            - ./mysqlconfig:/etc/mysql/conf.d
     composer-rest-server:
         container_name: 'composer-rest-server'
         image: 'hyperledger/composer-rest-server:latest'
@@ -62,4 +60,3 @@ services:
           - ~/.composer:/home/composer/.composer
         ports:
           - 8080:8080
-
